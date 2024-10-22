@@ -1,6 +1,7 @@
 import os
 import psycopg2
 from fastapi import FastAPI
+from psycopg2 import sql
 
 app = FastAPI()
 

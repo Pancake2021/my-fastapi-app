@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - master
   pull_request:
     branches:
       - main
+      - master
 
 jobs:
   build-test:
@@ -26,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r app/requirements.txt
 
-      - name: Run test
+      - name: Run tests
         run: |
           PYTHONPATH=$(pwd) pytest app/tests/
 

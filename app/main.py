@@ -1,9 +1,7 @@
 import os
 import psycopg2
 from fastapi import FastAPI
-from psycopg2 import sql
-
-app = FastAPI()
+from contextlib import asynccontextmanager
 
 def get_db_connection():
     conn = psycopg2.connect(
@@ -28,9 +26,14 @@ def init_db():
     cursor.close()
     conn.close()
 
-@app.on_event("startup")
-def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Код, выполняемый при запуске приложения
     init_db()
+    yield
+    # Код, выполняемый при остановке приложения (если необходимо)
+
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/")
 def read_main():

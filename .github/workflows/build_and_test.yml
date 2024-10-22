@@ -27,5 +27,4 @@ jobs:
       - name: Run tests
         run: |
           cd app
-          pytest
-
+	  PYTHONPATH=$(pwd) pytest tests/

@@ -3,4 +3,4 @@ uvicorn
 psycopg2-binary
 prometheus-client
 pytest
-
+httpx

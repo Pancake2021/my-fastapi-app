@@ -65,4 +65,7 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: postgres
         run: |
-          pytest app/tests/
+          echo "PYTHONPATH is: $PYTHONPATH"
+   	  PYTHONPATH=$(pwd)
+   	  echo "PYTHONPATH is now: $PYTHONPATH"
+   	  pytest app/tests/
